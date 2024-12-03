@@ -1,5 +1,7 @@
 package com.GrishaUp.JavaCoreSkyPro.dtoEmployee;
 
+import org.springframework.stereotype.Service;
+
 import java.util.Objects;
 
 public class Employee {
