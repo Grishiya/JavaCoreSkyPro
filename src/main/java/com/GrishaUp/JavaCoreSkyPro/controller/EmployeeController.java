@@ -16,5 +16,10 @@ public class EmployeeController {
     public String createEmployee(@RequestParam String firstName, @RequestParam String lastName) {
         return employeeService.createEmployee(firstName, lastName);
     }
+
+    @GetMapping(value = "/delete")
+    public String deleteEmployee(@RequestParam String firstName, @RequestParam String lastName) {
+        return employeeService.deleteEmployee(firstName, lastName);
+    }
 }
 
