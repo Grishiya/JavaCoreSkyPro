@@ -1,6 +1,7 @@
 package com.GrishaUp.JavaCoreSkyPro.services;
 
 import com.GrishaUp.JavaCoreSkyPro.dtoEmployee.Employee;
+import com.GrishaUp.JavaCoreSkyPro.exception.EmployeeNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,8 +22,8 @@ public class EmployeeServiceImpl implements EmployeeService {
                 return "Ты уже тут работаешь дурень";
             }
             employees.add(employee);
-        }else {
-        return "Извини,наш штат полон,приходи позже";
+        } else {
+            return "Извини,наш штат полон,приходи позже";
         }
 
         return "Поздравляю " + employee.getFirstName() + " " + employee.getLastName();
@@ -35,11 +36,16 @@ public class EmployeeServiceImpl implements EmployeeService {
             employees.remove(employee);
             return firstName + " " + lastName + " уволен";
         }
-        return "У нас нет таких сотрудников";
+        throw new EmployeeNotFoundException("У нас нет таких сотрудников");
     }
 
     @Override
     public String searchEmployee(String firstName, String lastName) {
-        return null;
+        Employee employee = new Employee(firstName, lastName);
+        if (
+                employees.contains(employee)) {
+            return "Cотрудник " + firstName + lastName + " найден";
+        }
+        throw new EmployeeNotFoundException("У нас нет таких сотрудников");
     }
 }
