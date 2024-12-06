@@ -14,8 +14,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final Map<String, Employee> employees = new HashMap<>();
 
     @Override
-    public String createEmployee(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
+    public String createEmployee(String firstName, String lastName,int salary, int department) {
+        Employee employee = new Employee(firstName, lastName, salary, department);
         if (employees.size() == 10) {
             throw new NoSpaceForEmployeeException("\"Извини,наш штат полон,приходи позже\"");
         }
