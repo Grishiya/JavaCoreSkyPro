@@ -46,4 +46,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         throw new EmployeeNotFoundException("У нас нет таких сотрудников");
     }
+    @Override
+    public Collection<Employee> getAllEmployee(){
+        return employees.values();
+    }
 }
